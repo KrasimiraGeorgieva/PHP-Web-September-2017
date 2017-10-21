@@ -1,0 +1,97 @@
+******************************
+Problem 1.	Prepare Database
+******************************
+
+CREATE DATABASE `php-course` /*!40100 COLLATE 'utf8_general_ci' */
+CREATE TABLE `students` (
+	`student_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`first_name` VARCHAR(100) NOT NULL DEFAULT '0',
+	`last_name` VARCHAR(100) NOT NULL DEFAULT '0',
+	`student_number` VARCHAR(50) NOT NULL DEFAULT '0',
+	`phone` VARCHAR(38) NULL DEFAULT NULL,
+	`home_address` VARCHAR(255) NULL DEFAULT NULL,
+	`date_of_record` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`date_of_last_data_change` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`is_active_or_not` ENUM('active','not active') NULL DEFAULT NULL,
+	`motivation_letter` TEXT NULL,
+	`notes` TEXT NULL,
+	PRIMARY KEY (`student_id`),
+	UNIQUE INDEX `student_number` (`student_number`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='php-course';
+
+************************
+Problem 2.	Add records
+************************
+INSERT INTO `php-course`.`students` (`first_name`, `last_name`, `student_number`, `phone`,`home_address`, `is_active_or_not`,`motivation_letter`,`notes`) VALUES ('Petar', 'Ivanov', '233655', '359889555666', 'София, ул.Иглика 23','active', 'Мотивационно писмо мотивационно писмо мотивационно писмо мотивационно писмо мотивационно писмо. Мотивационно писмо мотивационно писмо.', 'бележки бележки бележки. бележки бележки бележки бележки бележки.');
+
+INSERT INTO `php-course-basics`.`students` (`first_name`, `last_name`, `student_number`, `phone`,`home_address`, `is_active_or_not`,`motivation_letter`,`notes`) 
+VALUES ('Ira', 'Petkova', '233656', '359883999222', 'Перник, ул.Незабравка 12','active', 'Мотивационно писмо на Ира мотивационно писмо мотивационно писмо. На Ира мотивационно писмо мотивационно писмо.', 'Ира е от Перник.');
+/* Affected rows: 1  Found rows: 0  Warnings: 0  Duration for 1 query: 0.016 sec. */
+
+INSERT INTO `php-course-basics`.`students` (`first_name`, `last_name`, `student_number`) 
+VALUES ('Ivan', 'Minchov', '233657');
+/* Affected rows: 1  Found rows: 0  Warnings: 0  Duration for 1 query: 0.015 sec. */
+
+INSERT INTO `php-course-basics`.`students` (`first_name`, `last_name`, `student_number`) 
+VALUES ('Ivan', 'Petrov', '233658');
+/* Affected rows: 1  Found rows: 0  Warnings: 0  Duration for 1 query: 0.000 sec. */
+
+INSERT INTO `php-course-basics`.`students` (`first_name`, `last_name`, `student_number`) 
+VALUES ('Ivan', 'Petrov', '233661'),('Siika', 'Draganova', '233659'), ('Viktor', 'Nikolov', '233660');
+/* Affected rows: 3  Found rows: 0  Warnings: 0  Duration for 1 query: 0.000 sec. */
+
+***************************
+Problem 3.	Change Records 
+***************************
+UPDATE students
+SET phone = '359888888888'
+WHERE student_id = 2;
+/* Affected rows: 1  Found rows: 0  Warnings: 0  Duration for 1 query: 0.000 sec. */
+
+UPDATE students
+SET home_address = 'Plovdiv,ul. Neznaina 56'
+WHERE student_id = 9;
+/* Affected rows: 1  Found rows: 0  Warnings: 0  Duration for 1 query: 0.015 sec. */
+
+UPDATE students
+SET home_address = 'Varna, bul.Levski 6'
+WHERE phone is NULL and student_id = 8;
+/* Affected rows: 1  Found rows: 0  Warnings: 0  Duration for 1 query: 0.015 sec. */
+
+UPDATE students
+SET home_address = 'SoftUni building 1'
+WHERE phone is NULL;
+/* Affected rows: 5  Found rows: 0  Warnings: 0  Duration for 1 query: 0.016 sec. */
+
+UPDATE students
+SET home_address = 'NULL'
+WHERE student_id = 8;
+/* Affected rows: 1  Found rows: 0  Warnings: 0  Duration for 1 query: 0.015 sec. */
+
+***************************
+Problem 4.	Delete Records
+***************************
+DELETE FROM students
+WHERE student_id = 1;
+/* Affected rows: 1  Found rows: 0  Warnings: 0  Duration for 1 query: 0.016 sec. */
+
+DELETE FROM students
+WHERE home_address IS NULL;
+/* Affected rows: 1  Found rows: 0  Warnings: 0  Duration for 1 query: 0.016 sec. */
+
+DELETE FROM students
+WHERE home_address IS NULL;
+/* Affected rows: 2  Found rows: 0  Warnings: 0  Duration for 1 query: 0.015 sec. */
+
+
+TRUNCATE TABLE students;
+/* Affected rows: 0  Found rows: 0  Warnings: 0  Duration for 1 query: 0.031 sec. */
+SELECT  `student_id`,  `first_name`,  `last_name`,  `student_number`,  `phone`,  `home_address`,  `date_of_record`,  `date_of_last_data_change`,  `is_active_or_not`,  LEFT(`motivation_letter`, 256),  LEFT(`notes`, 256) FROM `php-course`.`students` LIMIT 1000;
+SHOW CREATE TABLE `php-course`.`students`;
+
+
+
+
