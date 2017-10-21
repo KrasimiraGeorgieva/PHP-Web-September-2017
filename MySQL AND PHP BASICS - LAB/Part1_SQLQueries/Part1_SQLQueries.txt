@@ -1,5 +1,5 @@
 ******************************
-Problem 1.	Prepare Database
+Problem 1. Prepare Database
 ******************************
 
 CREATE DATABASE `php-course` /*!40100 COLLATE 'utf8_general_ci' */
@@ -23,7 +23,7 @@ ENGINE=InnoDB;
 SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='php-course';
 
 ************************
-Problem 2.	Add records
+Problem 2. Add records
 ************************
 INSERT INTO `php-course`.`students` (`first_name`, `last_name`, `student_number`, `phone`,`home_address`, `is_active_or_not`,`motivation_letter`,`notes`) VALUES ('Petar', 'Ivanov', '233655', '359889555666', 'София, ул.Иглика 23','active', 'Мотивационно писмо мотивационно писмо мотивационно писмо мотивационно писмо мотивационно писмо. Мотивационно писмо мотивационно писмо.', 'бележки бележки бележки. бележки бележки бележки бележки бележки.');
 
@@ -44,7 +44,7 @@ VALUES ('Ivan', 'Petrov', '233661'),('Siika', 'Draganova', '233659'), ('Viktor',
 /* Affected rows: 3  Found rows: 0  Warnings: 0  Duration for 1 query: 0.000 sec. */
 
 ***************************
-Problem 3.	Change Records 
+Problem 3. Change Records 
 ***************************
 UPDATE students
 SET phone = '359888888888'
@@ -72,7 +72,7 @@ WHERE student_id = 8;
 /* Affected rows: 1  Found rows: 0  Warnings: 0  Duration for 1 query: 0.015 sec. */
 
 ***************************
-Problem 4.	Delete Records
+Problem 4. Delete Records
 ***************************
 DELETE FROM students
 WHERE student_id = 1;
