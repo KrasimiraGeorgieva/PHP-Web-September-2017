@@ -1,0 +1,97 @@
+LAB: HTTP, HTML and PHP
+
+Problem 1.	Get HTTP Headers for request and response
+
+http://softuni.bg/
+-------------------
+
+HTTP Request Header
+--------------------
+GET / HTTP/1.1
+Host: softuni.bg
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36
+Upgrade-Insecure-Requests: 1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: bg-BG,bg;q=0.8
+
+HTTP Response Header
+---------------------
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: text/html; charset=utf-8
+Content-Encoding: gzip
+Vary: Accept-Encoding
+Set-Cookie: language=bg; path=/; secure
+X-Frame-Options: SAMEORIGIN
+Date: Fri, 27 Oct 2017 09:55:37 GMT
+Content-Length: 21611
+
+
+https://www.wikipedia.org/
+---------------------------
+
+HTTP Request Header
+--------------------
+:authority:www.wikipedia.org
+:method:GET
+:path:/
+:scheme:https
+accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+accept-encoding:gzip, deflate, br
+accept-language:bg-BG,bg;q=0.8
+cache-control:max-age=0
+cookie:CP=H2; WMF-Last-Access=27-Oct-2017; WMF-Last-Access-Global=27-Oct-2017; GeoIP=BG:22:Sofia:42.68:23.32:v4
+if-modified-since:Thu, 19 Oct 2017 18:31:57 GMT
+if-none-match:W/"151cd-55bea9239c165"
+upgrade-insecure-requests:1
+user-agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36
+
+HTTP Response Header
+---------------------
+age:60419
+backend-timing:D=331 t=1509043001795107
+cache-control:s-maxage=86400, must-revalidate, max-age=3600
+content-encoding:gzip
+content-type:text/html
+date:Fri, 27 Oct 2017 11:23:42 GMT
+etag:W/"151cd-55bea9239c165"
+last-modified:Thu, 19 Oct 2017 18:31:57 GMT
+server:mw1186.eqiad.wmnet
+status:304
+strict-transport-security:max-age=106384710; includeSubDomains; preload
+vary:Accept-Encoding
+via:1.1 varnish-v4, 1.1 varnish-v4, 1.1 varnish-v4
+x-analytics:WMF-Last-Access=27-Oct-2017;WMF-Last-Access-Global=27-Oct-2017;https=1
+x-cache:cp1054 hit/5, cp3032 hit/5, cp3043 hit/602167
+x-cache-status:hit
+x-client-ip:130.204.253.155
+x-varnish:699246592 723846959, 74748365 59713151, 960433227 281053343
+
+http://php.net/
+----------------
+
+HTTP Request Header
+--------------------
+GET / HTTP/1.1
+Host: php.net
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate
+Accept-Language: bg-BG,bg;q=0.8
+Cookie: COUNTRY=NA%2C130.204.253.155; LAST_NEWS=1509103800; LAST_LANG=en
+If-Modified-Since: Fri, 27 Oct 2017 11:00:10 GMT
+
+HTTP Response Header
+---------------------
+HTTP/1.1 304 Not Modified
+Server: nginx/1.6.2
+Date: Fri, 27 Oct 2017 11:31:50 GMT
+Connection: keep-alive
+
+
+
