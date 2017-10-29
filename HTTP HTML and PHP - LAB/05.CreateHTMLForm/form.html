@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05.Create HTML Form</title>
+</head>
+<body>
+<div>
+    <p>Let us do something more useful now. We are going to check what sort of browser the visitor is using. For that,
+        we check the user agent string the browser sends as part of the HTTP request.
+        This information is stored in a variable. Variables always start with a dollar-sign in PHP.</p>
+    <p>Instead of using a PHP echo statement to output something, we jumped out of PHP mode and just sent straight HTML.
+        The important and powerful point to note here is that the logical flow of the script remains intact.
+        Only one of the HTML blocks will end up getting sent to the viewer depending on the result of strpos().
+        In other words, it depends on whether the string MSIE was found or not.</p>
+</div>
+<div>
+    <select name="color" size="3">
+        <option>red</option>
+        <option>blue</option>
+        <option>green</option>
+        <option>pink</option>
+    </select>
+    <select name="color">
+        <option>red</option>
+        <option>blue</option>
+        <option>green</option>
+        <option>pink</option>
+    </select>
+</div>
+<p>
+</p>
+<div>
+<select multiple="multiple">
+    <optgroup label="ДАМСКИ ПАРФЮМИ">
+        <option>Lanvin Eclat D'Arpege</option>
+        <option>Versace Crystal Noir</option>
+        <option>Lancome La Vie Est Belle</option>
+        <option>Dior Addict</option>
+        <option>Chanel Coco Mademoiselle</option>
+        <option>Max Mara Le Parfum</option>
+        <option>Thierry Mugler Womanity</option>
+        <option>Thierry Mugler Angel</option>
+    </optgroup>
+    <optgroup label="МЪЖКИ ПАРФЮМИ">
+        <option>Giorgio Armani Acqua Di Gio</option>
+        <option>Paco Rabanne 1 Million</option>
+        <option>Dolce&Gabbana The One</option>
+        <option>Giorgio Armani Attitude</option>
+        <option>Giorgio Armani Black Code</option>
+        <option>Dolce&Gabbana The One</option>
+        <option>Bvlgari Aqua Pour Homme</option>
+        <option>Paco Rabanne Invictus</option>
+    </optgroup>
+</select>
+</div >
+<p></p>
+<div>
+<select>
+    <optgroup label="ДАМСКИ ПАРФЮМИ">
+        <option>Lanvin Eclat D'Arpege</option>
+        <option>Versace Crystal Noir</option>
+        <option>Lancome La Vie Est Belle</option>
+        <option>Dior Addict</option>
+        <option>Chanel Coco Mademoiselle</option>
+        <option>Max Mara Le Parfum</option>
+        <option>Thierry Mugler Womanity</option>
+        <option>Thierry Mugler Angel</option>
+    </optgroup>
+    <optgroup label="МЪЖКИ ПАРФЮМИ">
+        <option>Giorgio Armani Acqua Di Gio</option>
+        <option>Paco Rabanne 1 Million</option>
+        <option>Dolce&Gabbana The One</option>
+        <option>Giorgio Armani Attitude</option>
+        <option>Giorgio Armani Black Code</option>
+        <option>Dolce&Gabbana The One</option>
+        <option>Bvlgari Aqua Pour Homme</option>
+        <option>Paco Rabanne Invictus</option>
+    </optgroup>
+</select>
+</div>
+<br>
+<form action="">
+    <input type="checkbox">Male<br>
+    <input type="checkbox">Female<br>
+    <input type="checkbox">Other<br>
+</form>
+<br>
+<form>
+    <input type="radio" value="" name="bus"> Bus <br>
+    <input type="radio" value="" name="train"> Train <br>
+    <input type="radio" value="" name="airplane"> Airplane
+</form>
+<br>
+<form>
+<label>Group 1</label>
+        <input type="radio" value="" name="group 1">
+        <input type="radio" value="" name="group 1">
+        <input type="radio" value="" name="group 1">
+        <input type="radio" value="" name="group 1">
+<br>
+    <label>Group 2</label>
+        <input type="radio" value="" name="group 2">
+        <input type="radio" value="" name="group 2">
+        <input type="radio" value="" name="group 2">
+        <input type="radio" value="" name="group 2">
+</form>
+<br>
+<form action="">
+    Datepicker:
+    <input type="date" id="datepicker">
+</form>
+<br>
+<form action="/action_page.php">
+    Colorpicker:
+    <input type="color" name="colorpicker" value="#d693ce">
+</form>
+<br>
+<p>This information is stored in a variable. Variables always start with a dollar-sign in PHP. This information is
+    stored in a variable. Variables always start with a dollar-sign in PHP. This information is stored in a variable.
+    Variables always start with a dollar-sign in.PHP. This information is stored in a variable. Variables always
+    start with a dollar-sign in PHP. </p>
+<br>
+<form action="">
+    E-mail:
+    <input type="email" name="email">
+    <input type="submit">
+</form>
+<br>
+<form action="">
+    Numbers (between 1 and 100):
+    <input type="number" name="number" min="1" max="100">
+    <input type="submit">
+</form>
+<br>
+<form action="">
+    This is submit button:
+    <input type="submit">
+</form>
+</body>
+</html>
