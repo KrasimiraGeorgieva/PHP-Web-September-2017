@@ -80,7 +80,7 @@ class MyController extends Controller
                 $date_sale = date('Y-m-d H:i:s');
 
                 $sale = new SalesModel($this->db);
-                $sale_id = $sale->create( $car_id, $customer_id, $amount, $date_sale);
+                $sale_id = $sale->create($amount, $car_id, $customer_id, $date_sale);
 
                 $this->db->commit();
                 include "view/addCarCustomerSale.php";
