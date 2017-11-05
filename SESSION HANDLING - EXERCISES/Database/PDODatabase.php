@@ -24,6 +24,7 @@ class PDODatabase implements DatabaseInterface
 
     public function getLastError(): array
     {
-        // TODO: Implement getLastError() method.
+        $this->render("app/error",
+                new ErrorDTO("Error editing the profile."));
     }
 }
