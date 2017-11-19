@@ -1,41 +1,49 @@
 <?php
 
-namespace TaskManagement;
+namespace TaskManagement\Data;
 
 class TaskDTO
 {
+    const TITLE_MIN_LENGTH = 3;
+    const TITLE_MAX_LENGTH = 50;
+
+    const DESCRIPTION_MIN_LENGTH = 10;
+    const DESCRIPTION_MAX_LENGTH = 10000;
+
+    const LOCATION_MIN_LENGTH = 3;
+    const LOCATION_MAX_LENGTH = 100;
+
     private $id;
+
     private $title;
+
     private $description;
+
     private $location;
-    private $authorId;
-    private $categoryId;
+
+    /**
+     * @var UserDTO
+     */
+    private $author;
+
+    /**
+     * @var CategoryDTO
+     */
+    private $category;
+
     private $startedOn;
+
     private $dueDate;
 
-    public static function create (string $title,string $description,string $location,int $authorId = null,
-                                   int $categoryId = null,string $startedOn,string $dueDate,int $id = null):TaskDTO
-    {
-        return(new TaskDTO())
-            ->setTitle($title)
-            ->setDescription($description)
-            ->setLocation($location)
-            ->setAuthorId($authorId)
-            ->setCategoryId($categoryId)
-            ->setStartedOn($startedOn)
-            ->setDueDate($dueDate)
-            ->setId($id);
-    }
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function setId($id):TaskDTO
+    public function setId($id)
     {
         $this->id = $id;
-        return $this;
     }
 
     public function getTitle()
@@ -43,10 +51,15 @@ class TaskDTO
         return $this->title;
     }
 
-    public function setTitle($title):TaskDTO
+    public function setTitle($title)
     {
+        DTOValidator::validate(
+            self::TITLE_MIN_LENGTH,
+            self::TITLE_MAX_LENGTH,
+            $title,
+            "Title length out of range"
+        );
         $this->title = $title;
-        return $this;
     }
 
     public function getDescription()
@@ -54,10 +67,15 @@ class TaskDTO
         return $this->description;
     }
 
-    public function setDescription($description):TaskDTO
+    public function setDescription($description)
     {
+        DTOValidator::validate(
+            self::DESCRIPTION_MIN_LENGTH,
+            self::DESCRIPTION_MAX_LENGTH,
+            $description,
+            "Description length out of range"
+        );
         $this->description = $description;
-        return $this;
     }
 
     public function getLocation()
@@ -65,32 +83,35 @@ class TaskDTO
         return $this->location;
     }
 
-    public function setLocation($location):TaskDTO
+    public function setLocation($location)
     {
+        DTOValidator::validate(
+            self::LOCATION_MIN_LENGTH,
+            self::LOCATION_MAX_LENGTH,
+            $location,
+            "Location length out of range"
+        );
         $this->location = $location;
-        return $this;
     }
 
-    public function getAuthorId()
+    public function getAuthor(): UserDTO
     {
-        return $this->authorId;
+        return $this->author;
     }
 
-    public function setAuthorId($authorId):TaskDTO
+    public function setAuthor(UserDTO $author)
     {
-        $this->authorId = $authorId;
-        return $this;
+        $this->author = $author;
     }
 
-    public function getCategoryId()
+    public function getCategory(): CategoryDTO
     {
-        return $this->categoryId;
+        return $this->category;
     }
 
-    public function setCategoryId($categoryId):TaskDTO
+    public function setCategory(CategoryDTO $category)
     {
-        $this->categoryId = $categoryId;
-        return $this;
+        $this->category = $category;
     }
 
     public function getStartedOn()
@@ -98,10 +119,9 @@ class TaskDTO
         return $this->startedOn;
     }
 
-    public function setStartedOn($startedOn):TaskDTO
+    public function setStartedOn($startedOn)
     {
         $this->startedOn = $startedOn;
-        return $this;
     }
 
     public function getDueDate()
@@ -109,9 +129,8 @@ class TaskDTO
         return $this->dueDate;
     }
 
-    public function setDueDate($dueDate):TaskDTO
+    public function setDueDate($dueDate)
     {
         $this->dueDate = $dueDate;
-        return $this;
     }
 }

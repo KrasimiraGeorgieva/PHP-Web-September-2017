@@ -1,85 +1,134 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Krasimira
- * Date: 11/9/2017
- * Time: 23:27
- */
 
-namespace TaskManagement;
+namespace TaskManagement\Data;
 
 
 class UserDTO
 {
+    const FIELDS_MAX_LENGTH = 255;
+
+    const USERNAME_MIN_LENGTH = 4;
+    const PASSWORD_MIN_LENGTH = 6;
+    const FIRST_NAME_MIN_LENGTH = 3;
+    const LAST_NAME_MIN_LENGTH = 3;
+
+
     private $id;
+
     private $username;
+
     private $password;
+
     private $firstName;
+
     private $lastName;
 
-    public static function create (string $username, string $password, string $firstName,
-                                   string $lastName, int $id = null):UserDTO
-    {
-        return (new UserDTO())
-            ->setUsername($username)
-            ->setPassword($password)
-            ->setFirstName($firstName)
-            ->setLastName($lastName)
-            ->setId($id);
-    }
-
+    /**
+     * @return mixed
+     */
     public function getId()
     {
         return $this->id;
     }
 
-    public function setId($id):UserDTO
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
     {
         $this->id = $id;
-        return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getUsername()
     {
         return $this->username;
     }
 
-    public function setUsername($username):UserDTO
+    /**
+     * @param mixed $username
+     * @throws \Exception
+     */
+    public function setUsername($username)
     {
+        DTOValidator::validate(
+            self::USERNAME_MIN_LENGTH,
+            self::FIELDS_MAX_LENGTH,
+            $username,
+            "Username length out of range"
+        );
         $this->username = $username;
-        return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getPassword()
     {
         return $this->password;
     }
 
-    public function setPassword($password):UserDTO
+    /**
+     * @param mixed $password
+     * @throws \Exception
+     */
+    public function setPassword($password)
     {
+        DTOValidator::validate(
+            self::PASSWORD_MIN_LENGTH,
+            self::FIELDS_MAX_LENGTH,
+            $password,
+            "Password length out of range"
+        );
         $this->password = $password;
-        return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getFirstName()
     {
         return $this->firstName;
     }
 
-    public function setFirstName($firstName):UserDTO
+    /**
+     * @param mixed $firstName
+     * @throws \Exception
+     */
+    public function setFirstName($firstName)
     {
+        DTOValidator::validate(
+            self::FIRST_NAME_MIN_LENGTH,
+            self::FIELDS_MAX_LENGTH,
+            $firstName,
+            "First name length out of range"
+        );
         $this->firstName = $firstName;
-        return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getLastName()
     {
         return $this->lastName;
     }
 
-    public function setLastName($lastName):UserDTO
+    /**
+     * @param mixed $lastName
+     * @throws \Exception
+     */
+    public function setLastName($lastName)
     {
+        DTOValidator::validate(
+            self::LAST_NAME_MIN_LENGTH,
+            self::FIELDS_MAX_LENGTH,
+            $lastName,
+            "Last name length out of range"
+        );
+
         $this->lastName = $lastName;
-        return $this;
     }
 }

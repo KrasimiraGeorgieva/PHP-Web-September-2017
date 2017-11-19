@@ -1,35 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Krasimira
- * Date: 11/9/2017
- * Time: 23:15
- */
 
-namespace TaskManagement;
+namespace TaskManagement\Data;
 
 
 class CategoryDTO
 {
+    const NAME_MIN_LENGTH = 3;
+    const NAME_MAX_LENGTH = 50;
+
     private $id;
     private $name;
-
-    public static function create(string $name, int $id = null):CategoryDTO
-    {
-        return (new CategoryDTO())
-            ->setName($name)
-            ->setId($id);
-    }
+    private $taskCount;
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function setId($id):CategoryDTO
+    public function setId($id)
     {
         $this->id = $id;
-        return $this;
     }
 
     public function getName()
@@ -37,9 +27,25 @@ class CategoryDTO
         return $this->name;
     }
 
-    public function setName($name):CategoryDTO
+    public function setName($name)
     {
+        DTOValidator::validate(
+            self::NAME_MIN_LENGTH,
+            PHP_INT_MAX,
+            $name,
+            "Name length of range"
+        );
+
         $this->name = $name;
-        return $this;
+    }
+
+    public function getTaskCount()
+    {
+        return $this->taskCount;
+    }
+
+    public function setTaskCount($taskCount)
+    {
+        $this->taskCount = $taskCount;
     }
 }
