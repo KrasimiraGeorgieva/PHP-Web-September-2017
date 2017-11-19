@@ -16,7 +16,7 @@ class PDOPreparedStatement implements StatementInterface
     }
 
 
-    public function execute(array $params = []): ResultSetInterface
+    public function execute(...$params): ResultSetInterface
     {
         $this->pdoStatement->execute($params);
 

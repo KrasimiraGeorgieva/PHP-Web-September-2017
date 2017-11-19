@@ -15,6 +15,7 @@ class PDODatabase implements DatabaseInterface
         $this->pdo = $pdo;
     }
 
+
     public function query(string $query): StatementInterface
     {
         $stmt = $this->pdo->prepare($query);

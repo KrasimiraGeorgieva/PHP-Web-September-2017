@@ -5,7 +5,7 @@ namespace Database;
 
 interface ResultSetInterface
 {
-public function fetch($className): \Generator;
+    public function fetch($className = null): \Generator;
 
-public function fetchColumn(int $colNum = 0);
+    public function fetchColumn(int $colNum = 0);
 }
