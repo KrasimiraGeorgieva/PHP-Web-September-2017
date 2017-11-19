@@ -1,15 +1,21 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Krasimira
- * Date: 11/10/2017
- * Time: 00:04
- */
 
 namespace TaskManagement\Service;
 
 
+use TaskManagement\Data\CategoryDTO;
+
 interface CategoryServiceInterface
 {
+    /**
+     * @return \Generator|CategoryDTO[]
+     */
+    public function getAll(): \Generator;
 
+    public function view(int $id): CategoryDTO;
+
+    /**
+     * @return \Generator|CategoryDTO[]
+     */
+    public function report(): \Generator;
 }

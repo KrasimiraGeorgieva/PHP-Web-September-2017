@@ -1,20 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Krasimira
- * Date: 11/10/2017
- * Time: 00:03
- */
 
 namespace TaskManagement\Service;
 
-
-use TaskManagement\DTO\DashboardDTO;
+use TaskManagement\Data\DashboardDTO;
+use TaskManagement\Data\TaskDTO;
 use TaskManagement\Repository\TaskRepositoryInterface;
-use TaskManagement\TaskDTO;
+
 
 class TaskService implements TaskServiceInterface
 {
+    const PER_PAGE = 5;
+
     /**
      * @var TaskRepositoryInterface
      */
@@ -29,26 +25,54 @@ class TaskService implements TaskServiceInterface
 
     public function add(TaskDTO $task): bool
     {
-        // TODO: Implement add() method.
+        return $this->taskRepository->insert($task);
     }
 
     public function edit(TaskDTO $task, int $id): bool
     {
-        // TODO: Implement edit() method.
+        $taskFromDb = $this->taskRepository->findOne($id);
+
+        if (null === $taskFromDb) {
+            throw new \Exception("Task does not exist");
+        }
+
+        return $this->taskRepository->update($task, $id);
     }
 
     public function remove(int $id): bool
     {
-        // TODO: Implement remove() method.
+        $taskFromDb = $this->taskRepository->findOne($id);
+
+        if (null === $taskFromDb) {
+            throw new \Exception("Task does not exist");
+        }
+
+        return $this->taskRepository->delete($id);
     }
 
     public function view(int $id): TaskDTO
     {
-        // TODO: Implement view() method.
+        return $this->taskRepository->findOne($id);
     }
 
-    public function viewAll(int $pageNum): DashboardDTO
+    public function getDashboard(int $pageNum): DashboardDTO
     {
-        // TODO: Implement viewAll() method.
+        $limit = self::PER_PAGE;
+        $offset = ($pageNum - 1) * self::PER_PAGE;
+
+        $tasksPerPage = $this->taskRepository->findAll($limit, $offset);
+        $allTasks = $this->taskRepository->count();
+        $allPages = ceil($allTasks / self::PER_PAGE);
+        $hasPrevious = $pageNum > 1;
+        $hasNext = $pageNum < $allPages;
+
+        $dto = new DashboardDTO();
+        $dto->setTasks($tasksPerPage);
+        $dto->setCurrentPage($pageNum);
+        $dto->setAllPages($allPages);
+        $dto->setPrevious($hasPrevious);
+        $dto->setNext($hasNext);
+
+        return $dto;
     }
 }

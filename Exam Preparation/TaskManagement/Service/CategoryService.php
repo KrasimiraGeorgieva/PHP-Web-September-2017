@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Krasimira
- * Date: 11/10/2017
- * Time: 00:04
- */
 
 namespace TaskManagement\Service;
 
 
+use TaskManagement\Data\CategoryDTO;
 use TaskManagement\Repository\CategoryRepositoryInterface;
 
 class CategoryService implements CategoryServiceInterface
@@ -24,4 +19,24 @@ class CategoryService implements CategoryServiceInterface
     }
 
 
+    /**
+     * @return \Generator|CategoryDTO[]
+     */
+    public function getAll(): \Generator
+    {
+        return $this->categoryRepository->findAll();
+    }
+
+    public function view(int $id): CategoryDTO
+    {
+        return $this->categoryRepository->findOne($id);
+    }
+
+    /**
+     * @return \Generator|CategoryDTO[]
+     */
+    public function report(): \Generator
+    {
+        return $this->categoryRepository->findTasksPerGroup();
+    }
 }
