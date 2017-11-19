@@ -9,7 +9,13 @@
 namespace TaskManagement\Repository;
 
 
+use TaskManagement\Data\UserDTO;
+
 interface UserRepositoryInterface
 {
-    public function register();
+    public function findOne(int $id): UserDTO;
+
+    public function findOneByUsername(string $username): ?UserDTO;
+
+    public function insert(UserDTO $user): bool;
 }

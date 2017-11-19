@@ -1,16 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Krasimira
- * Date: 11/9/2017
- * Time: 22:25
- */
 
 namespace TaskManagement\Repository;
 
 
 
 use Database\DatabaseInterface;
+use TaskManagement\Data\UserDTO;
+
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -25,9 +21,76 @@ class UserRepository implements UserRepositoryInterface
         $this->db = $db;
     }
 
-
-    public function register()
+    public function findOne(int $id): UserDTO
     {
-        // TODO: Implement register() method.
+        $query = "
+            SELECT 
+                id, 
+                username, 
+                password, 
+                first_name AS firstName, 
+                last_name AS lastName
+            FROM
+                users
+            WHERE
+                id = ?
+             ";
+
+        return $this->db->query($query)
+            ->execute($id)
+            ->fetch(UserDTO::class)
+            ->current();
+    }
+
+    public function findOneByUsername(string $username): ?UserDTO
+    {
+        $query = "
+            SELECT 
+                id, 
+                username, 
+                password, 
+                first_name AS firstName, 
+                last_name AS lastName
+            FROM
+                users
+            WHERE
+                username = ?
+             ";
+
+        return $this->db->query($query)
+            ->execute($username)
+            ->fetch(UserDTO::class)
+            ->current();
+    }
+
+    public function insert(UserDTO $user): bool
+    {
+        $query = "
+            INSERT INTO
+              users
+            (
+              username,
+              password,
+              first_name,
+              last_name
+            )
+              VALUES
+            (
+              ?,
+              ?,
+              ?,
+              ?
+            );
+        ";
+
+        $this->db->query($query)
+            ->execute(
+                $user->getUsername(),
+                $user->getPassword(),
+                $user->getFirstName(),
+                $user->getLastName()
+            );
+
+        return true;
     }
 }
