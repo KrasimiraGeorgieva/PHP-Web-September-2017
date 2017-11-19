@@ -1,14 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Krasimira
- * Date: 11/9/2017
- * Time: 22:24
- */
 
 namespace TaskManagement\Repository;
 
+use TaskManagement\Data\CategoryDTO;
+
 interface CategoryRepositoryInterface
 {
+    public function findAll(): \Generator;
 
+    public function findOne(int $id): CategoryDTO;
+
+    public function findTasksPerGroup(): \Generator;
 }
